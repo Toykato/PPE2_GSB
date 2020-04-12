@@ -14,7 +14,7 @@
 
     <div class="conteneur_boutton">
 
-        <form action="../controller/index.php" method="POST" >
+        <form action='?c=visiteur&f=creationFiche' method="POST" >
 
             Étape : <input type="text" name="etape">
             Kilomètres : <input type="text" name="kilometre">

@@ -1,11 +1,7 @@
 <?php
 
-require_once '../model/model.php';
-/*$login = $_SESSION['login'];
-echo $login;
-$mdp = $_SESSION['mdp'];
-echo $mdp;
-*/
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +28,7 @@ echo $mdp;
 <body>
 
     <div id="consultationMiddle">
-        <p>Bienvenue <?php //getInformations() ?><p>
+        <p>Bienvenue <?php $_SESSION['nom']; ?><p>
         <p>Fiche de frais de <?php getMois();?> </p>
     </div>
 </body>

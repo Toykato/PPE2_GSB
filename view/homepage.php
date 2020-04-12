@@ -1,6 +1,9 @@
 <?php
-    //require_once '../model/model.php';
+    
+    require_once "../model/model.php";
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +23,21 @@
 
     <div class="conteneur_boutton">
 
-        <form action="?c=connexion&f=connexion" method="POST" >
+        <form action="?c=index&f=connectUser" method="POST">
 
             Login : <input type="text" name="login">
 
             Mot de passe : <input type="password" name="mdp">
 
-            <input type="submit" value="Envoyer" name='formConnexion'>
+            <input type="submit" value="Envoyer">
 
         </form>
-
+    <?php
+        if(isset($erreur))
+        {
+            echo $erreur;
+        }
+    ?>
     </div>
 
 </body>
