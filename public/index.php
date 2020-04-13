@@ -1,11 +1,14 @@
 <?php
 
+session_start();
+echo '<pre>'; var_dump($_SESSION); echo '</pre>';
+
 $get=$_GET;
 //var_dump($get);
 
 $router = [];
 $router['controller'] = 'index';
-$router['function'] = 'connectUser';
+$router['function'] = 'index';
 //var_dump($router['controller']);
 //var_dump($router['function']);
 
@@ -17,6 +20,3 @@ if (!empty($get)) {
 require_once "../controllers/" . $router['controller'] . ".php";
 
 $router['function']();
-
-
-
