@@ -20,34 +20,6 @@ function dbConnect()
     }
 } 
 
-
-function getInformations()
-{
-    $db = dbConnect();
-
-    $reqInformationsVisiteur = 'SELECT nom, prenom FROM visiteur WHERE login = "dandre" AND mdp = "oppg5";';
-    
-    $pdoReqVisiteur = $db -> query ($reqInformationsVisiteur);
-    $pdoReqVisiteur -> setFetchMode(PDO::FETCH_ASSOC);
-    echo $pdoReqVisiteur;
-    //return $pdoReqVisiteur["nom"];
-    //return $ligne["prenom"];
-
-}
-
-
-function getMois()
-{
-    setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-    echo ucwords((strftime("%B %Y"))); 
-}
-
-function getDateComplete()
-{
-    setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-    echo ucwords((strftime("%A %d %B %Y")));
-}
-
 function connectUser()
 {
     $db = dbConnect(); //On récupère le DSN, user, pwd de dbConnect dans model.php
@@ -57,32 +29,32 @@ function connectUser()
         $login = $_POST['login'];
         $mdp = $_POST['mdp'];
 
-        if(!empty($login) AND !empty($mdp))
+        if(!empty($login) AND !empty($mdp)) //Si les champs sont renseignés
         {
-            $requser = $db->prepare('SELECT * FROM visiteur WHERE login = ? AND mdp = ?;');
-            $requser->execute(array($login, $mdp));
-            $userexist = $requser->rowCount();
+            $req_user = $db->prepare('SELECT * FROM visiteur WHERE login = ? AND mdp = ?;');
+            $req_user->execute(array($login, $mdp));
+            $user_exist = $req_user->rowCount();
 
-            if($userexist == 1)
+            if($user_exist == 1) //Si le rowCount renvoie 1 alors l'utilisateur existe dans la DB
             {
-                $erreur = "Connecté !";
-                $userConnected = $requser->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['user_firstname'] = $userConnected['prenom'];
-                $_SESSION['user_lastname'] = $userConnected['nom'];
+                $error = "Connecté !";
+                $user_connected = $req_user->fetch(PDO::FETCH_ASSOC);
+                $_SESSION['user_firstname'] = $user_connected['prenom'];
+                $_SESSION['user_lastname'] = $user_connected['nom'];
                 unset($_SESSION['connection_error']);
                 return true;
             }
             else
             {
-                $erreur = "Mauvais login ou mot de passe";
-                $_SESSION['connection_error'] = $erreur;
+                $error = "Mauvais login ou mot de passe";
+                $_SESSION['connection_error'] = $error;
                 return false;
             }
         }
         else
         {
-            $erreur = "Tous les champs doivent être renseignés";
-            $_SESSION['connection_error'] = $erreur;
+            $error = "Tous les champs doivent être renseignés";
+            $_SESSION['connection_error'] = $error;
             return false;
         }
     }

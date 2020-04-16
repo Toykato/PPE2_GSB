@@ -4,13 +4,13 @@ require_once '../model/model.php';
 
 function index()
 {
-    require_once '../view/homepage.php';
+    require_once '../view/homepage_login.php';
 }
 
 function connection()
 {
-    $connectionSuccess = connectUser();
-    $url = $connectionSuccess ? 'http://localhost:8000/public/index?c=visiteur&f=welcome' : 'http://localhost:8000/public/index?c=index&f=index';
+    $connection_success = connectUser();
+    $url = $connection_success ? 'http://localhost:8000/?c=visitor&f=consultationExpenseSheet' : 'http://localhost:8000/?c=index&f=index';
     header("Location: " . $url);
 }
 
