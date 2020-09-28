@@ -14,21 +14,22 @@
 
 <header>
 
-    <h1>Consultation de fiche de frais</h1>
-    <ul>
-        <li><a href='?c=visitor&f=consultation_expense_sheet'>Consultation</a></li>
-        <li><a href='?c=visitor&f=creation_expense_sheet'>Création de fiche</a></li>
-        <li><?php getCompleteDate()?></li>
-    </ul>
+    <div class="navbar_container">
+        <a href='?c=visitor&f=consultation_expense_sheet'><div class="navbar_element">Consultation</div></a>
+        <a href='?c=visitor&f=creation_expense_sheet'><div class="navbar_element">Création de fiche</div></a>
+        <div class="navbar_element"><?php getCompleteDate()?></div>
+    </div>
     
 </header>
 
 <body>
 
-    <div id="consultationMiddle">
-        <p>Bienvenue <?php echo $_SESSION['user_firstname'] . $_SESSION['user_lastname']; ?><p>
-        <p>Fiche de frais de <?php getMonth();?> </p>
+    <div class="body_container">
+        <h1>Consultation de fiche des frais</h1>
+        <div class="body_element"><p>Bienvenue <?php echo $_SESSION['user_firstname'] . $_SESSION['user_lastname']; ?><p></div>
+        <div class="body_element"><p>Fiche de frais de <?php getMonth();?></p></div>
     </div>
+
 </body>
 
 </html>
