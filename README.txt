@@ -20,6 +20,9 @@ pour créer ta branche et dev dessus :
 1 git branch nom_branche
 2 git checkout nom_branche
 
+Pour récupérer les données d'une branche sur le master :
+master >  git merge nom_branche
+
 Pour delete une branche : 
 git branch -d nom_branche
 
