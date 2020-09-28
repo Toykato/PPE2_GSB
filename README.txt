@@ -16,7 +16,13 @@ Envoyer les modifications à  Github :
 
 Sortir d'une commande en cours sous PowerShell : Ctrl + C
 
-Pour mettre à jour ton fork du projet :
-1. Ouvrir Git Bash sur Windows puis copier coller la ligne suivante :
-cd Desktop/Projet\ GitHub/PPE2_GSB/
-2. git merge upstream/master
+pour créer ta branche et dev dessus :
+1 git branch nom_branche
+2 git checkout nom_branche
+
+Pour delete une branche : 
+git branch -d nom_branche
+
+Pour lister une branche :
+git branch
+
