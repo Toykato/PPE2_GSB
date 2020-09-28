@@ -23,7 +23,7 @@
 
             Login : <input type="text" name="login">
 
-            Mot de passe : <input type="password" name="mdp">
+            Mot de passe : <input type="password" name="password">
 
             <input type="submit" value="Envoyer" name="submit">
 

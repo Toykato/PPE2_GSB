@@ -1,6 +1,6 @@
 <?php
 
-function creationExepenseSheet()
+function creationExpenseSheet()
 {
     require_once '../view/creation_expense_sheet.php';
 }

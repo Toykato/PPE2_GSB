@@ -1,5 +1,7 @@
 <?php
 
+require_once "../model/model.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +36,10 @@
 
         <input type="submit" value="Envoyer" name='formFicheFrais'>
     </div>
+
+<?php echo 'Mois : ' . getMonth();
+    echo 'Date complète : ' . getCompleteDate(); ?>
+
 </form>
 </body>
 </html>

@@ -28,12 +28,31 @@ function connectUser()
     {
         $login = $_POST['login'];
         $mdp = $_POST['mdp'];
+       
 
         if(!empty($login) AND !empty($mdp)) //Si les champs sont renseignés
         {
-            $req_user = $db->prepare('SELECT * FROM visiteur WHERE login = ? AND mdp = ?;');
-            $req_user->execute(array($login, $mdp));
-            $user_exist = $req_user->rowCount();
+            $req_user = $db->prepare('SELECT * FROM visiteur WHERE login = ?');
+            $req_user->execute(array($login));
+            $res_user = $req_user->fetch(PDO::FETCH_ASSOC);
+
+            if(password_verify($mdp, $res_user['password'])){
+                $error = "Connecté !";
+                //$user_connected = $req_user->fetch(PDO::FETCH_ASSOC);
+                $_SESSION['user_firstname'] = $res_user['prenom'];
+                $_SESSION['user_lastname'] = $res_user['nom'];
+                unset($_SESSION['connection_error']);
+                return true;
+            }else
+            {
+                $error = "Mauvais login ou mot de passe";
+                $_SESSION['connection_error'] = $error;
+                return false;
+            }
+
+
+            
+            /*$user_exist = $req_user->rowCount();
 
             if($user_exist == 1) //Si le rowCount renvoie 1 alors l'utilisateur existe dans la DB
             {
@@ -49,7 +68,7 @@ function connectUser()
                 $error = "Mauvais login ou mot de passe";
                 $_SESSION['connection_error'] = $error;
                 return false;
-            }
+            }*/
         }
         else
         {
